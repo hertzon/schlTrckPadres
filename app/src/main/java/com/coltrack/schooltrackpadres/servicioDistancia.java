@@ -45,6 +45,8 @@ public class servicioDistancia extends Service {
     String ruta=null;
     String latitudRuta=null;
     String longitudRuta=null;
+    String latitudParada=null;
+    String longitudParada=null;
 
 
     public servicioDistancia() {
@@ -55,9 +57,9 @@ public class servicioDistancia extends Service {
         super.onCreate();
         Toast.makeText(this, "Servicio creado!", Toast.LENGTH_SHORT).show();
         myDB = this.openOrCreateDatabase("coltrackSchool", MODE_PRIVATE, null);
-        myDB.execSQL("CREATE TABLE IF NOT EXISTS "
-                + "posicionRuta"
-                + " (ruta TEXT, distancia TEXT, correo TEXT, created_at TIMESTAMP, latitudRuta TEXT, longitudRuta TEXT);");
+//        myDB.execSQL("CREATE TABLE IF NOT EXISTS "
+//                + "posicionRuta"
+//                + " (ruta TEXT, distancia TEXT, correo TEXT, created_at TIMESTAMP, latitudRuta TEXT, longitudRuta TEXT, latitudParada TEXT, longitudParada TEXT);");
 
 
 
@@ -74,6 +76,7 @@ public class servicioDistancia extends Service {
     @Override
     public void onDestroy() {
         super.onDestroy();
+        myDB.close();
         Log.d(TAG, "OnDestroy Servicio");
         myTask.cancel(true);
     }
@@ -153,15 +156,18 @@ public class servicioDistancia extends Service {
                     strDistancia  = object.getString("respuesta");
                     latitudRuta=object.getString("latitudRuta");
                     longitudRuta=object.getString("longitudRuta");
+                    latitudParada=object.getString("latitudParada");
+                    longitudParada=object.getString("longitudParada");
 
                     distancia=Double.parseDouble(strDistancia);
                     //Guardamos distancia y pos de la ruta en la DB
                     SimpleDateFormat s = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                     String currentTimeStamp = s.format(new Date());
+
                     myDB.execSQL("INSERT INTO "
-                            + "posicionRuta"
-                            + " (ruta, distancia, correo, created_at, latitudRuta, longitudRuta)"
-                            + " VALUES ("+"'"+ ruta+"'" + ", "+"'"+strDistancia+"'"+", "+"'"+correo+"'"+", "+"'"+currentTimeStamp+"'"+", "+"'"+latitudRuta+"'"+", "+"'"+longitudRuta+"'"+");");
+                            + "posicionRuta1"
+                            + " (ruta, distancia, correo, created_at, latitudRuta, longitudRuta, latitudParada, longitudParada)"
+                            + " VALUES (" + "'" + ruta + "'" + ", " + "'" + strDistancia + "'" + ", " + "'" + correo + "'" + ", " + "'" + currentTimeStamp + "'" + ", " + "'" + latitudRuta + "'" + ", " + "'" + longitudRuta  + "'" + ", " + "'" + latitudParada + "'" + ", " + "'" + longitudParada+"'"+");");
 
 
 
@@ -191,10 +197,12 @@ public class servicioDistancia extends Service {
                     Log.d(TAG, "Distancia a ruta:" + distancia);
                 } catch (JSONException e) {
                     e.printStackTrace();
+                    Log.d(TAG,"JSONException: "+e.toString());
                 }
 
             } catch (IOException e) {
                 e.printStackTrace();
+                Log.d(TAG, "IOException: " + e.toString());
             }
 
 

@@ -1,15 +1,23 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        debug {
+            keyAlias 'prueba'
+            keyPassword 'irf840'
+            storeFile file('C:/Users/Nelson Rodriguez/llave_prueba.keystore')
+            storePassword 'irf840'
+        }
+    }
     compileSdkVersion 23
     buildToolsVersion "23.0.2"
-
     defaultConfig {
         applicationId "com.coltrack.schooltrackpadres"
         minSdkVersion 13
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
+        //multiDexEnabled true
     }
     buildTypes {
         release {
@@ -24,4 +32,5 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.3.0'
     compile 'org.jbundle.util.osgi.wrapped:org.jbundle.util.osgi.wrapped.org.apache.http.client:4.1.2'
+    compile 'com.google.android.gms:play-services-maps:8.3.0'
 }

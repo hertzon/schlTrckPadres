@@ -9,83 +9,19 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.coltrack.schooltrackpadres.Main1">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Distancia a la ruta:"
-        android:id="@+id/textView2"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:textSize="20dp" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        >
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/editTextDistancia"
-        android:layout_alignTop="@+id/textView2"
-        android:layout_toRightOf="@+id/textView2"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        <com.google.android.gms.maps.MapView
+            android:id="@+id/mapa"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentTop="true"></com.google.android.gms.maps.MapView>
+    </RelativeLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Latitud:"
-        android:id="@+id/textView3"
-        android:textSize="20dp"
-        android:layout_below="@+id/editTextDistancia"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/editTextLatitud"
-        android:layout_alignTop="@+id/textView3"
-        android:layout_toRightOf="@+id/textView3"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Longitud"
-        android:id="@+id/textView4"
-        android:textSize="20dp"
-        android:layout_below="@+id/editTextLatitud"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/editTextLongitud"
-        android:layout_alignTop="@+id/textView4"
-        android:layout_toRightOf="@+id/textView4"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Ultimo reporte"
-        android:id="@+id/textViewUltimoReporte"
-        android:textSize="20dp"
-        android:layout_below="@+id/editTextLongitud"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/editTextUltimoReporte"
-        android:layout_below="@+id/editTextLongitud"
-        android:layout_toRightOf="@+id/textViewUltimoReporte"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
 </RelativeLayout>

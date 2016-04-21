@@ -83,7 +83,7 @@ public class Login extends AppCompatActivity {
             public void onClick(View v) {
                 strUsuario=editTextusuario.getText().toString();
                 strClave=editTextclave.getText().toString();
-                if (!registrationId.equals(null)){
+                if (registrationId!=null){
                     //si los datos intruducidos son correctos enviamos datos a servidor incluido registrationId
                     BackgroundTask bkgTask = new BackgroundTask();
                     bkgTask.execute();
